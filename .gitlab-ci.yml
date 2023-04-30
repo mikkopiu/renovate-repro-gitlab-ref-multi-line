@@ -1,0 +1,14 @@
+---
+.base:
+  script:
+    - mytool
+
+myjob:
+  script:
+    # GitLab's own parser supports both formats for the sequence
+    - !reference [
+      .base,
+      script,
+    ]
+    # replaceReferenceTags will replace _this_ part with an empty string but leave the above alone
+    - !reference [.base, script]
